@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "filterz"
+    }
+  },
+  "defaultProject": "filterz",
+  "cli": {
+    "analytics": false
+  }
 }

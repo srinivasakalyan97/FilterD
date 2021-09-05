@@ -1,0 +1,18 @@
+.filterdropdown{
+    background: #eee;
+    border: 1px solid #bbb;
+    color: #bbb;
+    border-radius: 2px;
+    font-size: 14px;
+    line-height: 14px;
+  }
+  .filterdropdown.active{
+    color: #005b9c;
+  }
+  a.filterlink{
+    font-size: 12px;
+  }
+  .options {
+    height: 150px;
+    overflow-y: scroll;
+  }
