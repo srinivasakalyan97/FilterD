@@ -1,46 +1,20 @@
+<div class="container-fluid">
 <div class="col-md-6">
   <table class="table table-bordered table-condensed">
     <thead>
       <tr>
-        <th>Country
-          <div class="dropdown" style="float: right">
-            <button class="dropdown-toggle filterdropdown" ng-class="{active:XLfilters.dict['Country'].isActive}" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-filter"></span></button>
-            <div class="dropdown-menu prop" aria-labelledby="btnSearchBatch" style="width: 250px; padding: 15px;">
-              <div class="text-right">
-                <a href="#" class="filterlink" (click)="clearAll('Country')">Clear All</a> | <a href="#" class="filterlink" data-dismiss="modal">Close(X)</a>
-              </div>
-              <form>
-                <input type="text" class="form-control input-sm" name="country1"  [(ngModel)]="XLfilters.dict['Country'].searchText" placeholder="Filter by Country" />
-                <div>
-                  <a href="#" class="filterlink" (click)="markAll('Country',true)">Select All</a> | <a href="#" class="filterlink" (click)="markAll('Country',false)">Select None</a>
-                </div>
-                <div class="options">
-                  <ul style="list-style-type: none; padding: 0">
-                    <li *ngFor="let item of XLfilters.dict['Country'].options; let $index = index">
-                      <input id="countryOption{{$index}}" type="checkbox" name="country2" (change)="changeFunction($event)" [(ngModel)]="XLfilters.dict['Country'].dict[item.title].checked" />&nbsp;<label for="countryOption{{$index}}">{{item.title}}</label>
-                    </li>
-                  </ul>
-                </div>
-              </form>
-            </div>
-          </div>
-        </th>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
         <th>City
           <div class="dropdown" style="float: right">
-            <button class="dropdown-toggle filterdropdown" ng-class="{active:XLfilters.dict['City'].isActive}" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-filter"></span></button>
+            <button class="dropdown-toggle filterdropdown" ng-class="{active:XLfilters.dict['e_city'].isActive}" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-filter"></span></button>
             <div class="dropdown-menu prop" aria-labelledby="btnSearchBatch" style="width: 250px; padding: 15px;">
-              <div class="text-right">
-                <a href="#" class="filterlink" (click)="clearAll('City')">Clear All</a> | <a href="#" class="filterlink" data-dismiss="modal">Close(X)</a>
-              </div>
               <form>
-                <input type="text" class="form-control input-sm" name="city1"  [(ngModel)]="XLfilters.dict['City'].searchText" placeholder="Filter by City" />
-                <div>
-                  <a href="#" class="filterlink" (click)="markAll('City',true)">Select All</a> | <a href="#" class="filterlink" (click)="markAll('City',false)">Select None</a>
-                </div>
                 <div class="options">
                   <ul style="list-style-type: none; padding: 0">
-                    <li *ngFor="let item of XLfilters.dict['City'].options; let $index = index">
-                      <input id="cityOption{{$index}}" type="checkbox" name="city2" (change)="changeFunction($event)" [(ngModel)]="XLfilters.dict['City'].dict[item.title].checked" />&nbsp;<label for="cityOption{{$index}}">{{item.title}}</label>
+                    <li *ngFor="let item of XLfilters.dict['e_city'].options; let $index = index">
+                      <input id="cityOption{{$index}}" type="checkbox" name="city2" (change)="changeFunction($event)" [(ngModel)]="XLfilters.dict['e_city'].dict[item.title].checked" />&nbsp;<label for="cityOption{{$index}}">{{item.title}}</label>
                     </li>
                   </ul>
                 </div>
@@ -48,15 +22,50 @@
             </div>
           </div>
         </th>
-        <th>Name</th>
+        <th>Department
+          <div class="dropdown" style="float: right">
+            <button class="dropdown-toggle filterdropdown" ng-class="{active:XLfilters.dict['e_dept'].isActive}" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-filter"></span></button>
+            <div class="dropdown-menu prop" aria-labelledby="btnSearchBatch" style="width: 250px; padding: 15px;">
+              <form>
+                <div class="options">
+                  <ul style="list-style-type: none; padding: 0">
+                    <li *ngFor="let item of XLfilters.dict['e_dept'].options; let $index = index">
+                      <input id="deptOption{{$index}}" type="checkbox" name="Department" (change)="changeFunction($event)" [(ngModel)]="XLfilters.dict['e_dept'].dict[item.title].checked" />&nbsp;<label for="deptOption{{$index}}">{{item.title}}</label>
+                    </li>
+                  </ul>
+                </div>
+              </form>
+            </div>
+          </div>
+        </th>
+        <th>Floor
+          <div class="dropdown" style="float: right">
+            <button class="dropdown-toggle filterdropdown" ng-class="{active:XLfilters.dict['e_floor'].isActive}" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-filter"></span></button>
+            <div class="dropdown-menu prop" aria-labelledby="btnSearchBatch" style="width: 250px; padding: 15px;">
+              <form>
+                <div class="options">
+                  <ul style="list-style-type: none; padding: 0">
+                    <li *ngFor="let item of XLfilters.dict['e_floor'].options; let $index = index">
+                      <input id="FloorOption{{$index}}" type="checkbox" name="Floor" (change)="changeFunction($event)" [(ngModel)]="XLfilters.dict['e_floor'].dict[item.title].checked" />&nbsp;<label for="FloorOption{{$index}}">{{item.title}}</label>
+                    </li>
+                  </ul>
+                </div>
+              </form>
+            </div>
+          </div>
+        </th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let emp of XLfilters.results">
-        <td>{{emp.Country}}</td>
-        <td>{{emp.City}}</td>
-        <td>{{emp.Name}}</td>
+        <td>{{emp.e_id}}</td>
+        <td>{{emp.e_name}}</td>
+        <td>{{emp.email}}</td>
+        <td>{{emp.e_city}}</td>
+        <td>{{emp.e_dept}}</td>
+        <td>{{emp.e_floor}}</td>
       </tr>
     </tbody>
   </table>
+</div>
 </div>
