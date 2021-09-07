@@ -1705,11 +1705,11 @@ export class AppComponent implements OnInit{
       "e_floor": 2
     }
   ]
-  XLfilters = { list: [], dict: {}, results: [], all:[] };
+  FilterFields = { list: [], dict: {}, results: [], all:[] };
   
-  XLfiltrate = function() {
-    	var i,j,k,selected,blocks,filter,option, data=this.XLfilters.all,filters=this.XLfilters.list;
-      this.XLfilters.results=[];
+  FiltrateTheFields = function() {
+    	var i,j,k,selected,blocks,filter,option, data=this.FilterFields.all,filters=this.FilterFields.list;
+      this.FilterFields.results=[];
       for (j=0; j<filters.length; j++) {
       	filter=filters[j];
         filter.regex = filter.searchText.length?new RegExp(filter.searchText, 'i'):false;
@@ -1729,7 +1729,7 @@ export class AppComponent implements OnInit{
       	}
         if(blocks.rejects.length==1) blocks.rejects[0].visible=true;
         else if(blocks.rejects.length==0&&!blocks.mismatch){
-          this.XLfilters.results.push(data[i]);
+          this.FilterFields.results.push(data[i]);
         	blocks.allows.forEach((x)=>{x.visible=true});
         }
       }
@@ -1741,30 +1741,30 @@ export class AppComponent implements OnInit{
       }
     }
 
-    createXLfilters(arr, fields) {
-      this.XLfilters.all = arr;
+    createFilterFields(arr, fields) {
+      this.FilterFields.all = arr;
       
       for (var j=0; j<fields.length; j++) 
       {
-        this.XLfilters.list.push(
-          this.XLfilters.dict[fields[j]]={list:[],dict:{},field:fields[j],searchText:"",
+        this.FilterFields.list.push(
+          this.FilterFields.dict[fields[j]]={list:[],dict:{},field:fields[j],searchText:"",
         active:false,options:[]});
       }
       for (var i=0,z; i<arr.length; i++) 
       for (j=0; j<fields.length; j++) {
-        z=this.XLfilters.dict[fields[j]];
+        z=this.FilterFields.dict[fields[j]];
         z.dict[arr[i][fields[j]]] || z.list.push(z.dict[arr[i][fields[j]]]={title:arr[i][fields[j]],checked:true,
         visible:false,match:false});
     }
     }
 
     changeFunction(event){
-      this.XLfiltrate()
+      this.FiltrateTheFields()
     }
 
 ngOnInit(){
-  this.createXLfilters(this.employees, ['e_city','e_dept','e_floor']);
-  this.XLfiltrate()
+  this.createFilterFields(this.employees, ['e_city','e_dept','e_floor']);
+  this.FiltrateTheFields()
 }
 
 }
