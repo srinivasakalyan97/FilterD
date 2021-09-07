@@ -1707,15 +1707,6 @@ export class AppComponent implements OnInit{
   ]
   XLfilters = { list: [], dict: {}, results: [], all:[] };
   
-  markAll(field, b) {
-      this.XLfilters.dict[field].list.forEach((x) => {x.checked=b;});
-    }
-
-  clearAll = function(field) {
-    this.XLfilters.dict[field].searchText='';
-    this.XLfilters.dict[field].list.forEach((x) => {x.checked=true;});
-    }
-
   XLfiltrate = function() {
     	var i,j,k,selected,blocks,filter,option, data=this.XLfilters.all,filters=this.XLfilters.list;
       this.XLfilters.results=[];
@@ -1752,10 +1743,18 @@ export class AppComponent implements OnInit{
 
     createXLfilters(arr, fields) {
       this.XLfilters.all = arr;
-      for (var j=0; j<fields.length; j++) this.XLfilters.list.push(this.XLfilters.dict[fields[j]]={list:[],dict:{},field:fields[j],searchText:"",active:false,options:[]});
-      for (var i=0,z; i<arr.length; i++) for (j=0; j<fields.length; j++) {
-      z=this.XLfilters.dict[fields[j]];
-      z.dict[arr[i][fields[j]]] || z.list.push(z.dict[arr[i][fields[j]]]={title:arr[i][fields[j]],checked:true, visible:false,match:false});
+      
+      for (var j=0; j<fields.length; j++) 
+      {
+        this.XLfilters.list.push(
+          this.XLfilters.dict[fields[j]]={list:[],dict:{},field:fields[j],searchText:"",
+        active:false,options:[]});
+      }
+      for (var i=0,z; i<arr.length; i++) 
+      for (j=0; j<fields.length; j++) {
+        z=this.XLfilters.dict[fields[j]];
+        z.dict[arr[i][fields[j]]] || z.list.push(z.dict[arr[i][fields[j]]]={title:arr[i][fields[j]],checked:true,
+        visible:false,match:false});
     }
     }
 
